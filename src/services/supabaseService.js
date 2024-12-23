@@ -235,6 +235,15 @@ const getCats = async (userId) => {
   }
 };
 
+const getCatById = async (userId, catId) => {
+  try {
+    const cat = await getCatByUserId(userId, catId);
+    return cat !== null ? cat : { message: "No cat found for this user." };
+  } catch (error) {
+    throw error;
+  }
+};
+
 const createCat = async (userId, userEmail, catData) => {
   try {
     const cat = await createCatByUserId(userId, catData);
@@ -533,6 +542,14 @@ const signupWithOTP = async (email, first_name, last_name, phone_number) => {
       }
     });
 
+    const tokenPayload = {
+      userId: user.id,
+      email: user.email,
+      full_name: `${first_name} ${last_name}`,
+    };
+    const tokenOptions = { expiresIn: "1h" };
+    const token = jwt.sign(tokenPayload, JWT_SECRET, tokenOptions);
+
     if (error) {
       return { error: error.message };
     }
@@ -544,7 +561,7 @@ const signupWithOTP = async (email, first_name, last_name, phone_number) => {
       console.error('Error in create event in klaviyo:', error);
     }
 
-    return { data };
+    return { token, data };
   } catch (error) {
     console.error('Error in signupWithOTP:', error);
     throw error;
@@ -578,5 +595,6 @@ module.exports = {
   resetPassword,
   signinWithOTP,
   verifyOTP,
-  signupWithOTP
+  signupWithOTP,
+  getCatById
 };
