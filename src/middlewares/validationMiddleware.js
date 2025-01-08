@@ -360,7 +360,7 @@ const recommendationsSchema = Joi.object({
         'number.positive': 'Weight must be a positive number',
         'any.required': 'Weight is required'
     }),
-    target_weight: Joi.number().min(0).required().messages({
+    target_weight: Joi.number().min(0).messages({
         'number.min': 'Target weight must be at least 0',
         'any.required': 'Target weight is required'
     }),
