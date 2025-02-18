@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const { JWT_SECRET } = require('../config/config');
+const config = require('../config/config');
 const { supabase } = require('../services/supabaseConnection');
 
 const authenticateToken = async (req, res, next) => {
@@ -25,7 +25,7 @@ const authenticateToken = async (req, res, next) => {
         }
 
         // If not a Supabase token, try JWT
-        const { userId, email, full_name } = jwt.verify(token, JWT_SECRET);
+        const { userId, email, full_name } = jwt.verify(token, config.jwt.secret);
         req.user = { userId, email, full_name };
         next();
     } catch (error) {

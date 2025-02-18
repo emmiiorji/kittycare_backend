@@ -33,7 +33,7 @@ const {
   verifyOTPFromSupabase,
   signinUserInDatabase,
 } = require("./supabaseConnection");
-const { JWT_SECRET } = require("../config/config");
+const JWT_SECRET = require("../config/config").jwt.secret;
 const openaiService = require('./openaiService');
 // const { emailTransfer, getSubscriptionCancelTemplate } = require('../config/email');
 // const { getSignUpConfirmationHtmlTemplate, getResetPasswordHtmlTemplate, getSubscriptionSuccessTemplate } = require('../config/email');

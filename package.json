@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/server.js",
+    "start": "pm2 start ecosystem.config.json --no-daemon",
+    "dev": "NODE_ENV=development nodemon src/server.js",
     "test": "jest",
     "test:watch": "jest --watch"
   },
@@ -34,6 +35,7 @@
     "nodemailer": "^6.9.16",
     "nodemon": "^3.1.7",
     "openai": "^4.68.3",
+    "pm2": "^5.4.3",
     "request": "^2.88.2",
     "sqlite3": "^5.1.7",
     "stripe": "^17.3.1"

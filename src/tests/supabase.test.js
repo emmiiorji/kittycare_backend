@@ -3,7 +3,7 @@ const app = require('../server'); // Assuming you export the Express app from se
 const supabase = require('../services/supabaseConnection');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { JWT_SECRET } = require('../config/config');
+const JWT_SECRET = require('../config/config').jwt.secret;
 const openaiService = require('../services/openaiService');
 
 jest.mock('../services/supabaseConnection');

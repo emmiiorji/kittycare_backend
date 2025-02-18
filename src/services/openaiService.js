@@ -1,8 +1,8 @@
 const OpenAI = require("openai");
-const { OPENAI_API_KEY } = require("../config/config");
+const config = require("../config/config");
 
 const openai = new OpenAI({
-  apiKey: OPENAI_API_KEY,
+  apiKey: config.openai.apiKey,
 });
 
 const getRecommendations = async (cat) => {

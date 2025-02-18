@@ -1,5 +1,6 @@
 const stripeService = require('../services/stripeService');
 const paypalService = require('../services/paypalService')
+const config = require('../config/config');
 
 const createStripeSubscription = async (req, res) => {
     try {
@@ -115,8 +116,8 @@ const createPayPalPlan = async (req, res) => {
 const createPayPalSubscription = async (req, res) => {
     try {
         const { planId, subscriberDetails } = req.body;
-        const returnUrl = `${process.env.CLIENT_URL}/paymentmethodV2`;
-        const cancelUrl = `${process.env.CLIENT_URL}/paymentmethodV2`;
+        const returnUrl = `${config.client.baseUrl}/paymentmethodV2`;
+        const cancelUrl = `${config.client.baseUrl}/paymentmethodV2`;
 
         const result = await paypalService.createSubscription(planId, subscriberDetails, returnUrl, cancelUrl);
 

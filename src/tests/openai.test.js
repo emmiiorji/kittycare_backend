@@ -4,7 +4,7 @@ const app = require('../server');
 const supabaseService = require('../services/supabaseService');
 const openaiService = require('../services/openaiService');
 const jwt = require('jsonwebtoken');
-const { JWT_SECRET } = require('../config/config');
+const JWT_SECRET = require('../config/config').jwt.secret;
 
 jest.mock('../services/supabaseService');
 jest.mock('../services/openaiService');
