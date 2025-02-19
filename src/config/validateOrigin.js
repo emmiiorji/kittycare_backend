@@ -1,9 +1,8 @@
 const config = require('./config');
 
 let allowedRegExpOrigins = [
-  // add all acceptable origins to this file
-  /https:\/\/example.com$/,
-  /https:\/\/www.example.com$/,
+  // add all acceptable origins allowed in production to this array
+  // example: /https:\/\/example.com$/
 ];
 
 if (config.env === 'development') {
