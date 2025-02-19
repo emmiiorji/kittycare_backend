@@ -44,7 +44,7 @@ const googleOAuth = async (code) => {
         config.jwt.secret,
         { expiresIn });
 
-    return { email: userInfo.email, token, expiresIn, photo: userInfo.picture };
+    return { email: userInfo.email, token, expiresIn, photo: userInfo.picture, name: userInfo.name };
 };
 
 module.exports = {
