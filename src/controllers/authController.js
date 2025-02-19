@@ -6,7 +6,17 @@ const getGoogleOauthURL = async (req, res) => {
     res.json({ url });
 };
 
+const googleOAuth = async (req, res) => {
+    const { code } = req.body;
+    const response = await authService.googleOAuth(code);
+    if (response.error) {
+        return res.status(httpStatus.BAD_REQUEST).json({ error: response.error });
+    }
+    res.json(response);
+};
+
 module.exports = {
     getGoogleOauthURL,
+    googleOAuth,
 };
 
