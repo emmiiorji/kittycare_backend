@@ -5,25 +5,74 @@ Welcome to the KittyCare Server API documentation! This guide is designed to hel
 ## Table of Contents
 
 1. [Overview](#overview)
-2. [Authentication](#authentication)
-3. [API Endpoints](#api-endpoints)
+2. [💻 Getting Started](#getting-started)
+      - [Setup](#setup)
+      - [Prerequisites](#prerequisites)
+      - [Install](#install)
+      - [Usage](#usage)
+      - [Client Implementation](#client-side)
+3. [Authentication](#authentication)
+4. [API Endpoints](#api-endpoints)
     - [Authentication Routes](#authentication-routes)
     - [Subscription Routes](#subscription-routes)
     - [Cat Management Routes](#cat-management-routes)
     - [Chat Routes](#chat-routes)
     - [OpenAI Routes](#openai-routes)
-4. [Data Models](#data-models)
-5. [Error Handling](#error-handling)
-6. [Best Practices](#best-practices)
-7. [Environment Variables](#environment-variables)
+5. [Data Models](#data-models)
+6. [Error Handling](#error-handling)
+7. [Best Practices](#best-practices)
+8. [Environment Variables](#environment-variables)
+9. [Acknowledgements](#acknowledgements)
 
----
-
-## Overview
+## Overview <a name="overview"></a>
 
 The KittyCare server is built using Node.js and Express, leveraging Supabase for database management and OpenAI for AI-driven features. The server exposes a RESTful API that handles user authentication, subscription management, cat profiles, and chat functionalities. All protected routes require JWT-based authentication to ensure secure access.
 
-## Authentication
+## Getting Started <a name="getting-started"></a>
+To get a local copy up and running, follow these steps.
+
+### Prerequisites
+
+In order to run this project you need:
+- A command line interface
+- Install [Ruby](https://www.ruby-lang.org/)
+- Install [PostgreSQL database](https://www.postgresql.org/)
+- Have Rails set up and running (`gem install rails`)
+
+### Setup
+
+- Clone this repository to your desired folder:
+    ```sh
+    cd my-folder
+    git clone git@github.com:emmiiorji/kittycare_backend.git
+    ```
+- Create a `.env` file in the root directory and add the necessary environment variables following the `.env.example` file (located in the root directory) as a guide.
+- Follow <a href="https://support.google.com/cloud/answer/6158849?hl=en">this article</a> to set up Google OAuth 2.0 and add the client id and secret as GOOGLE_OAUTH_CLIENT_ID and GOOGLE_OAUTH_CLIENT_SECRET respectively, with the above mentioned `.env.example` as sample 
+- Create an account at [cloudinary](https://cloudinary.com/) and include the api keys within the .env file
+
+
+### Install
+
+Install this project with:
+
+```sh
+  cd kittycare_backend
+  npm install
+```
+
+### Usage
+
+To run the this backend server in development, execute the following command:
+
+```sh
+  npm run dev
+```
+
+## Client Side
+The client-side code is hosted on <a href="https://github.com/emmiiorji/kittycare_frontend">this GitHub repository</a>
+
+
+## Authentication <a name="authentication"></a>
 
 Authentication is handled using JSON Web Tokens (JWT). Users must authenticate via the signup or signin routes to receive a token, which must be included in the `Authorization` header for protected routes.
 
@@ -1295,3 +1344,6 @@ Happy Coding! 🐱🚀
     "last_name": "Doe",
     "phone_number": "1234567890" // optional
   }  ```
+
+  ## Acknowledgements <a name="acknowlegements"></a>
+  This project was clone from <a href="https://bitbucket.org/kittycare/kittycare_backend">Kitty Care</a>
