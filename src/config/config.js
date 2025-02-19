@@ -1,5 +1,6 @@
 // src/config/config.js
 const dotenv = require('dotenv');
+const { google } = require('googleapis');
 const path = require('path');
 const Joi = require('joi');
 
@@ -61,6 +62,11 @@ module.exports = {
         GOOGLE_OAUTH_CLIENT_ID: envVars.GOOGLE_OAUTH_CLIENT_ID,
         GOOGLE_OAUTH_CLIENT_SECRET: envVars.GOOGLE_OAUTH_CLIENT_SECRET,
         GOOGLE_OAUTH_REDIRECT_URL: `${envVars.CLIENT_BASE_URL}/${envVars.GOOGLE_OAUTH_REDIRECT_URL}`,
+        client: new google.auth.OAuth2(
+            envVars.GOOGLE_OAUTH_CLIENT_ID,
+            envVars.GOOGLE_OAUTH_CLIENT_SECRET,
+            `${envVars.CLIENT_BASE_URL}/${envVars.GOOGLE_OAUTH_REDIRECT_URL}`
+        ),
     },
     client: {
         baseUrl: envVars.CLIENT_BASE_URL,
