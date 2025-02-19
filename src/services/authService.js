@@ -1,4 +1,5 @@
 const { google } = require('googleapis')
+const jwt = require('jsonwebtoken');
 const authService = require('../services/authService');
 const config = require('../config/config');
 
@@ -28,21 +29,22 @@ const googleOAuth = async (code) => {
         const { data } = await oauth2.userinfo.get();
         userInfo = data;
       } catch (error) {
-        logger.error(error);
-        throw new ApiError(httpStatus.UNAUTHORIZED, 'Unauthorized');
+        console.log(error);
+        throw new Error({ status: 400, message: 'An error occurred while processing the request' });
     }
 
     // Store user info in jwt token and return the token
+    const expiresIn = config.jwt.accessExpirationMinutes * 60;
     const token = jwt.sign(
         {
             email: userInfo.email,
-            firstName: userInfo.given_name,
-            lastName: userInfo.family_name,
-            picture: userInfo.picture
+            name: userInfo.name,
+            photo: userInfo.picture
         },
         config.jwt.secret,
-        { expiresIn: config.jwt.accessExpirationMinutes * 60 });
-    return token;
+        { expiresIn });
+
+    return { email: userInfo.email, token, expiresIn, photo: userInfo.picture };
 };
 
 module.exports = {
