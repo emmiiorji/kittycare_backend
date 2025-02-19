@@ -35,9 +35,8 @@ To get a local copy up and running, follow these steps.
 
 In order to run this project you need:
 - A command line interface
-- Install [Ruby](https://www.ruby-lang.org/)
-- Install [PostgreSQL database](https://www.postgresql.org/)
-- Have Rails set up and running (`gem install rails`)
+- A command line interface
+- Install [Node](https://nodejs.org/en)
 
 ### Setup
 
@@ -47,8 +46,9 @@ In order to run this project you need:
     git clone git@github.com:emmiiorji/kittycare_backend.git
     ```
 - Create a `.env` file in the root directory and add the necessary environment variables following the `.env.example` file (located in the root directory) as a guide.
-- Follow <a href="https://support.google.com/cloud/answer/6158849?hl=en">this article</a> to set up Google OAuth 2.0 and add the client id and secret as GOOGLE_OAUTH_CLIENT_ID and GOOGLE_OAUTH_CLIENT_SECRET respectively, with the above mentioned `.env.example` as sample 
-- Create an account at [cloudinary](https://cloudinary.com/) and include the api keys within the .env file
+- Follow <a href="https://support.google.com/cloud/answer/6158849?hl=en">this article</a> to set up Google OAuth 2.0 and add the client id and secret as GOOGLE_OAUTH_CLIENT_ID and GOOGLE_OAUTH_CLIENT_SECRET respectively, with the above mentioned `.env.example` as sample
+- Ensure that the url `CLIENT_BASE_URL` is listed among the authorized origins in the Google Console
+- Also ensure that the url `CLIENT_BASE_URL/GOOGLE_OAUTH_REDIRECT_URL` is added as listed among the authorized redirect urls in the Google Console
 
 
 ### Install
